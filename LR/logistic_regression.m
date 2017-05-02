@@ -1,5 +1,7 @@
+% load('../data.mat');
 % Training model with linear regression to get weights
 bhat = glmfit(MTrain(:,2:29),MTrain(:,31),'binomial');
+% bhat = LR(test_x,test_y,1,1000000);
 
 % Testing our model with out trainig set
 x = [ones(size(MTest,1),1) MTest(:,2:29)] * bhat;
@@ -8,6 +10,9 @@ haty = (hatProb >= 0.5);
 avgErr = mean(abs(haty - MTest(:,31)));
 disp(avgErr);
 
+labels = +haty;
+C = confusionmat(test_y,labels);
+disp(C);
 
 % Testing different thresholds to see which gets minimum error
 
@@ -18,5 +23,5 @@ for tsh = 0.001:0.001:0.999
     i = i + 1;
 end
 
-plot(0.021:0.001:0.999,avgErr(21:999),'r.');
+% plot(0.021:0.001:0.999,avgErr(21:999),'r.');
 % According to the plot, the best threshold should be 0.35

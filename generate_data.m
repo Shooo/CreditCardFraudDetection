@@ -36,3 +36,5 @@ train_y = MTrain(:,31);
 test_x = MTest(:,2:29);
 test_x = normc(test_x);
 test_y = MTest(:,31);
+
+save('data.mat','M','MTest','MTrain','test_x','test_y','train_x','train_y');
