@@ -2,17 +2,19 @@ load('../data.mat');
 load('../features.mat');
 
 
-net = patternnet(25);
+% net = patternnet(10);
+% net = feedfowardnet([10]);
+net.trainParam.lr = 1;
 
 
-% [net,tr] = train(net,train_x',train_y');
+[net,tr] = train(net,train_x',train_y');
 % [net,tr] = train(net,train_x(:,cand_and_good-1)',train_y');
-[net,tr] = train(net,train_x(:,good-1)',train_y');
+% [net,tr] = train(net,train_x(:,good-1)',train_y');
 
 
-% prob = net(test_x');
+prob = net(test_x');
 % prob = net(test_x(:,cand_and_good - 1)');
-prob = net(test_x(:,good - 1)');
+% prob = net(test_x(:,good - 1)');
 
 
 % Testing different thresholds to see which gets minimum error
