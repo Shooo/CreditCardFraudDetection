@@ -31,11 +31,11 @@ MTest = MTest(shuffleIndex2,:);
 % MTrain is our training set
 % MTest is our testing set
 
-train_x = MTrain(:,2:30);
+train_x = MTrain(:,2:29);
 train_x = normc(train_x);
 train_y = MTrain(:,31);
 
-test_x = MTest(:,2:30);
+test_x = MTest(:,2:29);
 test_x = normc(test_x);
 test_y = MTest(:,31);
 
