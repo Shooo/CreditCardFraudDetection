@@ -17,10 +17,3 @@ ylabel('second cluster')
 xlabel('the number of samples')
 
 
-figure(2)
-grid on
-plot(objFcn);
-xlabel('the number of iteration')
-ylabel('obejactive function')
-
-

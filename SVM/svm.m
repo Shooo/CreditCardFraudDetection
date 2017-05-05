@@ -5,6 +5,7 @@ load('../features.mat');
 % Changing the Kernel Scale allows us to change levels of gamma
 
 % Testing optimum value for gamma
+
 % errors = [];
 % for i=0.2:0.2:1.0
 %     model = fitcsvm(train_x, train_y, 'KernelFunction', 'rbf', 'KernelScale', i);
@@ -12,7 +13,9 @@ load('../features.mat');
 %     avgErr = mean(abs(label - MTest(:,31)));
 %     errors = [errors avgErr];
 % end
-% 
+
+% Plot change in gamma with error
+
 % figure
 % plot(0.2:0.2:1.0,errors);
 % xlabel('gamma');
@@ -31,23 +34,38 @@ load('../features.mat');
 % fprintf('polynomial\n')
 % model = fitcsvm(train_x,train_y,'KernelFunction','polynomial');
 
+
 % testing different features:
+
+% Training with all features
 model = fitcsvm(train_x,train_y,'KernelFunction', 'rbf', 'KernelScale', 0.2);
+
+% Training with candidate and good features
 % model = fitcsvm(train_x(:,cand_and_good-1),train_y,'KernelFunction', 'rbf', 'KernelScale', 0.2);
+
+% Training with strictly good features
 % model = fitcsvm(train_x(:,good-1),train_y,'KernelFunction', 'rbf', 'KernelScale', 0.2);
 
+% Testing with all features
 [label,score] = predict(model,test_x);
+
+% Testing with candidate and good features
 % [label,score] = predict(model,test_x(:,cand_and_good-1));
+
+% Testing with strictly good features
 % [label,score] = predict(model,test_x(:,good-1));
 
+% Calculate error rate
 avgErr = mean(abs(label - MTest(:,31)));
 disp(avgErr);
 
+% Calculate confusion Matrix
 C = confusionmat(test_y, label);
 disp(C);
 acc = sum(diag(C)) ./ sum(C(:));
 disp(acc);
 
+% Calculate per class Recall and Precision
 P = [];
 R = [];
 
@@ -56,6 +74,7 @@ for i=1:2
     R(i) = C(i,i) ./ sum(C(i,:));
 end
 
+% Display per class Recall and Precision
 for i=1:2
     fprintf('Precision for label %d: %d\n"',(i-1),P(i));
 end
