@@ -1,8 +1,11 @@
 clear
 clc
+load('../data.mat');
+load('../features.mat');
+
 % Fuzzy C-means (FCM)
 % step 1: load data
-load('data.mat','test_x');
+% load('data.mat','test_x');
 K=2; % 10 clusters; 
 
 arrCentroid=zeros(K,28); %center points; 
@@ -49,6 +52,6 @@ end
 
 % Plot convergency curve for which the horizontal-direction indicates iteration, 
 %and the vertical-direction indicates the objective function F(i.e., SSE).
-plot(objFcn);
-xlabel('iteration numbers')
-ylabel('objective function')
+myplot(U,objFcn);
+%label('iteration numbers')
+%ylabel('objective function')

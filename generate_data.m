@@ -1,7 +1,6 @@
 % load data credicard data into M
 M = csvread('creditcard.csv');
 
-rng(123);
 % Divide data set into class 0 and class 1
 M0 = M(M(:,31) == 0,:);
 M1 = M(M(:,31) == 1,:);

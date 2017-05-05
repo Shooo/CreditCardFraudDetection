@@ -6,19 +6,21 @@ net = patternnet(25);
 net.trainParam.lr = 0.05;
 
 % testing different learning rates:
-a = [0.01 0.05 0.10 0.15 0.20];
-for idx = 1:numel(a)
-    net.trainParam.lr = a(idx);
-    [net,tr] = train(net,train_x',train_y');
-    prob = net(test_x');
-    haty = (prob >= 0.5);
-    avgErr(i) = mean(abs(haty' - MTest(:,31)));
-end
-
-figure;
-plot(a,avgErr);
-xlabel('learning rate');
-ylabel('error');
+% a = [0.01 0.05 0.10 0.15 0.20];
+% i = 1;
+% for idx = 1:numel(a)
+%     net.trainParam.lr = a(idx);
+%     [net,tr] = train(net,train_x',train_y');
+%     prob = net(test_x');
+%     haty = (prob >= 0.5);
+%     avgErr(i) = mean(abs(haty' - MTest(:,31)));
+%     i = i + 1;
+% end
+% 
+% figure;
+% plot(a,avgErr);
+% xlabel('learning rate');
+% ylabel('error');
 
 
 [net,tr] = train(net,train_x',train_y');
