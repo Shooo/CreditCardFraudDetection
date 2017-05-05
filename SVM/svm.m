@@ -57,8 +57,8 @@ for i=1:2
 end
 
 for i=1:2
-    fprintf("Precision for label %d: %d\n",(i-1),P(i));
+    fprintf('Precision for label %d: %d\n"',(i-1),P(i));
 end
 for i=1:2
-    fprintf("Recall for label %d: %d\n",(i-1),R(i));
+    fprintf('Recall for label %d: %d\n',(i-1),R(i));
 end
